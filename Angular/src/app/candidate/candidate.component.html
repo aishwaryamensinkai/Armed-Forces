@@ -1,0 +1,96 @@
+<div class="wrapper">
+    <div id="formContent">
+        <div>
+            <img src="/assets/img/users.png" id="icon" alt="User Icon" width="30" height="180">
+        </div>
+
+        <form #student="ngForm" (ngSubmit)="student.valid && onSubmit(student)">
+
+            <input type="text" #name="ngModel" [(ngModel)]="candidateService.selectedCandidate.name" name="name"
+                placeholder="Full Name" required [ngClass]="{'invalid-textbox' :student.submitted && !name.valid }">
+            <div *ngIf="student.submitted && !name.valid">
+                <label class="validation-message">This field is required.</label>
+            </div>
+            <br>
+
+            <input type="text" #age="ngModel" [(ngModel)]="candidateService.selectedCandidate.age" name="age"
+                placeholder="Age" required [ngClass]="{'invalid-textbox' :student.submitted && !age.valid }">
+            <div *ngIf="student.submitted && age.errors">
+                <label *ngIf="age.errors.required" class="validation-message">This field is required.</label>
+            </div>
+
+            <input type="text" #height="ngModel" [(ngModel)]="candidateService.selectedCandidate.height" name="height"
+                placeholder="Height" required [ngClass]="{'invalid-textbox' :student.submitted && !height.valid }">
+            <div *ngIf="student.submitted && height.errors">
+                <label *ngIf="height.errors.required" class="validation-message">This field is required.</label>
+            </div>
+
+            <input type="text" #weight="ngModel" [(ngModel)]="candidateService.selectedCandidate.weight" name="weight"
+                placeholder="Weight" required [ngClass]="{'invalid-textbox' :student.submitted && !weight.valid }">
+            <div *ngIf="student.submitted && !weight.valid">
+                <label class="validation-message">This field is required.</label>
+            </div>
+            <br><label style="color: grey;">Type Of Force &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select class="ui compact selection dropdown" name="typeOfForce" #typeOfForce="ngModel"
+                [(ngModel)]="candidateService.selectedCandidate.typeOfForce" placeholder="typeOfForce" required
+                [ngClass]="{'invalid-textbox' :student.submitted && !typeOfForce.valid }">
+                <option style="color: grey;" value="Army">Army</option>
+                <option style="color: grey;" value="Navy">Navy</option>
+                <option style="color: grey;" value="Airforce">Airforce</option>
+            </select>
+            <div *ngIf="student.submitted && !typeOfForce.valid">
+                <label class="validation-message"><br>This field is required.</label>
+            </div>
+            &nbsp;
+            <label style="color: grey;">Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select class="ui compact selection dropdown" name="category" #category="ngModel"
+                [(ngModel)]="candidateService.selectedCandidate.category" placeholder="category" required
+                [ngClass]="{'invalid-textbox' :student.submitted && !category.valid }">
+                <option style="color: grey;" value="General">General</option>
+                <option style="color: grey;" value="SC">SC</option>
+                <option style="color: grey;" value="ST">ST</option>
+                <option style="color: grey;" value="Other">Other</option>
+            </select>
+            <div *ngIf="student.submitted && !category.valid">
+                <label class="validation-message"><br>This field is required.</label>
+            </div>
+            <br>
+            <label style="color: grey;">Qualification &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select class="ui compact selection dropdown" name="qualification" #qualification="ngModel"
+                [(ngModel)]="candidateService.selectedCandidate.qualification" placeholder="Qualification" required
+                [ngClass]="{'invalid-textbox' :student.submitted && !qualification.valid }">
+                <option style="color: grey;" value="BE">BE</option>
+                <option style="color: grey;" value="Mtech">Mtech</option>
+                <option style="color: grey;" value="Phd">Phd</option>
+            </select>
+            <div *ngIf="student.submitted && !qualification.valid">
+                <label class="validation-message"><br>This field is required.</label>
+            </div>
+            &nbsp;
+            <label style="color: grey;">Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select class="ui compact selection dropdown" name="gender" #gender="ngModel"
+                [(ngModel)]="candidateService.selectedCandidate.gender" placeholder="Gender" required
+                [ngClass]="{'invalid-textbox' :student.submitted && !gender.valid }">
+                <option style="color: grey;" value="Male">Male</option>
+                <option style="color: grey;" value="Female">Female</option>
+                <option style="color: grey;" value="Other">Other</option>
+            </select>
+            <div *ngIf="student.submitted && !gender.valid">
+                <label class="validation-message"><br>This field is required.</label>
+            </div>
+
+            <br>
+            <input type="submit" value="Sign Up">
+        </form>
+
+        <!-- Success message -->
+        <div class="success" *ngIf="showSucessMessage">
+            Saved successfully
+        </div>
+
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+            {{serverErrorMessages}}
+        </div>
+    </div>
+</div>

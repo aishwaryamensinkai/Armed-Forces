@@ -1,0 +1,41 @@
+<html style="background-color: #56baed;">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Age</th>
+                        <th>Height</th>
+                        <th>Qualification</th>
+                        <th>Weight</th>
+                        <th>Gender</th>
+                        <th>Category</th>
+                        <th>Type Of Force</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let b of candidateService.candidate">
+                        <td>{{b.name}}</td>
+                        <td>{{b.age}}</td>
+                        <td>{{b.height}}</td>
+                        <td>{{b.qualification}}</td>
+                        <td>{{b.weight}}</td>
+                        <td>{{b.gender}}</td>
+                        <td>{{b.category}}</td>
+                        <td>{{b.typeOfForce}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</html>
